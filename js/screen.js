@@ -1,9 +1,3 @@
-
-var screenWidth = 500;
-var screenHeight = 250;
-var gameWidth = 1000;
-var gameHeight = 500;
-
 function setGamePosition(object){
 	var el = object;
 	var offsetX, offsetY;

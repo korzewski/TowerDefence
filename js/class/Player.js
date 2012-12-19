@@ -1,33 +1,45 @@
 function Player(config){
+	this.img = config.img;
+	this.x = config.x;
+	this.y = config.y;
+	
 	this.speed = 10;
-	this.radius = 20;
+	this.radius = 10;
 	
-	this.obj = new createjs.Shape();
-	this.obj.graphics.beginFill('#000');
-	this.obj.graphics.arc(0, 0, this.radius, 0, Math.PI*2);
+	this.bitmap = new createjs.Bitmap(this.img, 30, 30);
+	this.bitmap.regX = this.bitmap.regY = this.radius;
 	
-	this.obj.x = config.x;
-	this.obj.y = config.y;
+	this.hitAreaa = new createjs.Shape();
+	this.hitAreaa.graphics.beginFill("#000").drawRect(-12, -12, 30, 30);
+	this.bitmap.hitArea = this.hitAreaa;
+	
+	this.updateBitmapPosition();
+
+	stage.addChild(this.bitmap);
+};
+Player.prototype.updateBitmapPosition = function(){
+	this.bitmap.x = this.x;
+	this.bitmap.y = this.y;
 };
 Player.prototype.setPosition = function(){
 		if(keys[37]){
-			if(!(this.obj.x - this.radius <= 0)){
-				player.obj.x -= player.speed;
+			if(!(this.x - this.radius <= 10)){
+				player.x -= player.speed;
 			}
 		} else if(keys[39]){
-			if(!(this.obj.x + this.radius >= gameWidth)){
-				player.obj.x += player.speed;
+			if(!(this.x + this.radius >= gameWidth - 20)){
+				player.x += player.speed;
 			}
 		}
 		if(keys[38]){
-			if(!(this.obj.y - this.radius <= 0)){
-				player.obj.y -= player.speed;
+			if(!(this.y - this.radius <= 0)){
+				player.y -= player.speed;
 			}
 		} else if(keys[40]){
-			if(!(this.obj.y + this.radius >= gameHeight)){
-				player.obj.y += player.speed;
+			if(!(this.y + this.radius >= gameHeight - 10)){
+				player.y += player.speed;
 			}
 		}
-	
-	setGamePosition(player.obj);
+	this.updateBitmapPosition();
+	setGamePosition(player);
 };
