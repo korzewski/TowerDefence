@@ -1,15 +1,15 @@
 function setGamePosition(object){
-	var el = object;
+	var el = object.GetWorldCenter();
 	var offsetX, offsetY;
 
-	if(el.x > screenWidth/2 && el.x < gameWidth - screenWidth/2){
-		offsetX = (screenWidth/2) - el.x;
+	if(el.x * SCALE > screenWidth/2 && el.x * SCALE < gameWidth - screenWidth/2){
+		offsetX = (screenWidth/2) - el.x * SCALE;
 	}
-	if(el.y > screenHeight/2 && el.y < gameHeight - screenHeight/2){
-		offsetY = (screenHeight/2) - el.y;
+	if(el.y * SCALE > screenHeight/2 && el.y * SCALE < gameHeight - screenHeight/2){
+		offsetY = (screenHeight/2) - el.y * SCALE;
 	}
 	
-	$('#game').css({
+	$('#game, #gameDebug').css({
 		left: offsetX,
 		top: offsetY
 	});
