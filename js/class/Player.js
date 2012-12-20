@@ -43,7 +43,7 @@ Player.prototype.setPosition = function(){
 	}
 	this.updateBitmapPosition();
 	
-	setGamePosition(player.body);
+	focusCamera(this.body);
 };
 
 Player.prototype.checkCollision = function (){

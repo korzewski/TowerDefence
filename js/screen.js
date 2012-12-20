@@ -1,4 +1,4 @@
-function setGamePosition(object){
+function focusCamera(object){
 	var el = object.GetWorldCenter();
 	var offsetX, offsetY;
 

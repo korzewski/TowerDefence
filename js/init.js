@@ -1,3 +1,4 @@
+/* --- have to be set up dynamically --- */
 var screenWidth = 500;
 var screenHeight = 250;
 var gameWidth = 1000;
@@ -8,14 +9,13 @@ var player;
 var world;
 
 function init(){
-// box2d
+/* --- box2d --- */
 	world = new b2World(new b2Vec2(0, 10), true);
 	initializeDebug();
 	
 	createGround();
 	
-// -------------------------------------------------------------------------------------
-// easeljs
+/* --- easeljs --- */
 	stage = new createjs.Stage(document.getElementById('game'));
 	
 	player = new Player({x: 200, y: 50, img: IMAGE_CAT});
@@ -25,7 +25,6 @@ function init(){
 }
 
 function tick(){
-	// world.Step(frame rate, velocity iterations, position iterations)
 	world.Step(1/30, 10, 10);
 	world.DrawDebugData();
 	
@@ -52,7 +51,7 @@ function createGround(){
         {x: 800, y: -30},
         {x: 800, y: -300}
     ];
-    ground = createEdgeShape(groundMap, 0, 300);
+    createEdgeShape(groundMap, 0, 300);
 }
 function createEdgeShape(vertexArray, posX, posY, type) {
     var fixDef = new b2FixtureDef;
