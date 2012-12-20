@@ -42,6 +42,7 @@ Player.prototype.setPosition = function(){
 		}
 	}
 	this.updateBitmapPosition();
+	this.checkCollision();
 	
 	focusCamera(this.body);
 };

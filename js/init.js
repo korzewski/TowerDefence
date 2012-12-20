@@ -29,7 +29,6 @@ function tick(){
 	world.DrawDebugData();
 	
 	player.setPosition();
-	player.checkCollision();
 	stage.update();
 }
 
